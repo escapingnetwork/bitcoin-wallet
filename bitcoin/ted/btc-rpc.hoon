@@ -15,8 +15,8 @@
       header-list=['Content-Type'^'application/json' ~]
       ^=  body
       %-  some
-      %-  as-octt:mimes:html
-      %-  en-json:html
+      %-  as-octs:mimes:html
+      %-  en:json:html
       %-  pairs
       :~  jsonrpc+s+'2.0'
           id+s+'block-info'
@@ -31,8 +31,8 @@
       header-list=['Content-Type'^'application/json' ~]
       ^=  body
       %-  some
-      %-  as-octt:mimes:html
-      %-  en-json:html
+      %-  as-octs:mimes:html
+      %-  en:json:html
       %-  pairs
       :~  jsonrpc+s+'2.0'
           id+s+'list-unspent'
@@ -73,7 +73,7 @@
   ?~  full-file.client-response
   (pure:m ~)
   =/  body=@t  q.data.u.full-file.client-response
-  =/  jon=(unit json)  (de-json:html body)
+  =/  jon=(unit json)  (de:json:html body)
   ?~  jon  (pure:m ~)
   (pure:m (parse-json-rpc u.jon))
 ::

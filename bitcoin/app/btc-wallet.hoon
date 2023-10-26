@@ -80,8 +80,8 @@
   =/  warning=event:settings   [%put-entry q.byk.bowl %btc-wallet %warning %b %.y]
   =/  currency=event:settings  [%put-entry q.byk.bowl %btc-wallet %currency %s 'USD']
   =/  cards=(list card)
-    :~  (poke-our:hc %settings-store %settings-event !>(warning))
-        (poke-our:hc %settings-store %settings-event !>(currency))
+    :~  (poke-our:hc %settings %settings-event !>(warning))
+        (poke-our:hc %settings %settings-event !>(currency))
     ==
   ::
   :-  cards
@@ -172,9 +172,9 @@
     ?>  ?=(%migrate-settings non)
     :_  state
     ^-  (list card)
-    =/  bas=path  /(scot %p our.bowl)/settings-store/(scot %da now.bowl)
+    =/  bas=path  /(scot %p our.bowl)/settings/(scot %da now.bowl)
     ?.  .^(? %gu bas)
-      ~&  [dap.bowl %settings-store-mia]
+      ~&  [dap.bowl %settings-mia]
       ~
     ?.  .^(? %gx (weld bas /has-bucket/landscape/btc-wallet/noun))
       ~
@@ -182,7 +182,7 @@
       .^(data:settings %gx (weld bas /bucket/landscape/btc-wallet/noun))
     ?>  ?=(%bucket -.dat)
     |^  :-  =/  del=event:settings  [%del-bucket %landscape %btc-wallet]
-            (poke-our:hc %settings-store %settings-event !>(del))
+            (poke-our:hc %settings %settings-event !>(del))
         (murn ~(tap by bucket.dat) copy-if-missing)
     ::
     ++  copy-if-missing
@@ -193,7 +193,7 @@
       ?:  hav  ~
       ~&  [dap.bowl %importing-previous-setting key]
       =/  put=event:settings  [%put-entry q.byk.bowl %btc-wallet key val]
-      `(poke-our:hc %settings-store %settings-event !>(put))
+      `(poke-our:hc %settings %settings-event !>(put))
     --
   ::
   ++  handle-command

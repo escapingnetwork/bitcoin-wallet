@@ -24,7 +24,7 @@
       =,  html
       %-  some
       %-  as-octt:mimes
-      (en-json body)
+      (en:json body)
   ==
 ::
 ++  gen-request
@@ -163,7 +163,7 @@
   |=  hit=httr:eyre
   ^-  response:json-rpc
   ~|  hit
-  =/  jon=json  (need (de-json:html q:(need r.hit)))
+  =/  jon=json  (need (de:json:html q:(need r.hit)))
   ?.  =(%2 (div p.hit 100))
     (parse-rpc-error jon)
   =,  dejs-soft:format
