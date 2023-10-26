@@ -62,7 +62,7 @@ class UrbitApi {
   }
 
   settingsEvent(data: any) {
-    return this.action('settings-store', 'settings-event', data);
+    return this.action('settings', 'settings-event', data);
   }
 
   action(appl: string, mark: string, data: string) {
